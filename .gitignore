@@ -1,0 +1,9 @@
+.DS_Store
+.idea
+.ipynb_checkpoints
+*.java
+.vscode
+__pycache__
+*.zip
+respository_analytics/kestra
+.venv
