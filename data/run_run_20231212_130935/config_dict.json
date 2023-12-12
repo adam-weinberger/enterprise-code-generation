@@ -1,0 +1,38 @@
+{
+    "pipeline_steps_to_run": [
+        "split_train_test",
+        "make_prompts",
+        "generate_responses",
+        "evaluate_responses"
+    ],
+    "run_ts": "run_20231212_130935",
+    "code_base_directory": "../kestra/",
+    "train_ratio": 0.8,
+    "output_directory": "data/run_run_20231212_130935/",
+    "seed": 0,
+    "file_mapping_name": "file_mappings",
+    "split_strategy": "random",
+    "num_label_tokens": 2,
+    "tokens_prompts_count": 10,
+    "num_label_lines": 2,
+    "lines_prompts_count": 10,
+    "methods_prompts_count": 10,
+    "infill": true,
+    "max_lines_above": 50,
+    "max_lines_below": 50,
+    "inference_endpoint": "http://127.0.0.1:8008",
+    "inference_model": "codellama/7b",
+    "inference_temperature": 0.2,
+    "inference_top_p": 0.95,
+    "inference_times": 1,
+    "inference_max_tokens": 256,
+    "evaluation_metrics": [
+        "CodeBLEU",
+        "pass@k"
+    ],
+    "evaluation_parallel_process_count": 9,
+    "prompt_directory": "data/run_run_20231212_130935/prompts/",
+    "generated_responses_directory": "data/run_run_20231212_130935/generated_responses/",
+    "evaluation_directory": "data/run_run_20231212_130935/evaluated_responses/",
+    "analyzed_results_directory": "data/run_run_20231212_130935/analyzed_results/"
+}

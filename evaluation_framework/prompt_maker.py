@@ -2,7 +2,7 @@ import os
 import random
 from typing import List, Tuple
 
-import javalang
+from javalang import javalang
 import pandas as pd
 
 from config import config_dict, logger
@@ -230,8 +230,11 @@ def make_prompts(
                 # get indices of lines and tokens that correspond to normal code and are not empty or comments or imports
                 these_relevant_line_indices = [(file_path, num) for num in get_relevant_line_indices(lines, num_label_lines)]
                 all_relevant_line_indices.extend(these_relevant_line_indices)
-                these_relevant_token_indices = [(file_path, num) for num in get_relevant_token_indices(lines, num_label_tokens)]
-                all_relevant_token_indices.extend(these_relevant_token_indices)
+                try:
+                    these_relevant_token_indices = [(file_path, num) for num in get_relevant_token_indices(lines, num_label_tokens)]
+                    all_relevant_token_indices.extend(these_relevant_token_indices)
+                except Exception as e:
+                    skipped_files.append((file_path, "these_relevant_token_indices"))
 
                 try:
                     all_method_bodies.extend(find_method_in_file(lines, file_path))

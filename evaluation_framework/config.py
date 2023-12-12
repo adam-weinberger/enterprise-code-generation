@@ -9,19 +9,20 @@ import logging
 config_dict = {
   #run
   "pipeline_steps_to_run": ["split_train_test", "make_prompts", "generate_responses", "evaluate_responses"],
-  "run_ts": None,
+  "run_ts": "run_20231212_130935",#None,
   #split_train_test
-  "code_base_directory": "../snap_v4_clone/",
+  "code_base_directory": "../kestra/",
   "train_ratio": 0.8,
   "output_directory": "data/",
   "seed": 0,
+  "file_mapping_name": "file_mappings",
   "split_strategy": "random",
   #prompt_maker
   "num_label_tokens": 2,
-  "tokens_prompts_count": 1000,
+  "tokens_prompts_count": 10,
   "num_label_lines": 2,
-  "lines_prompts_count": 1000,
-  "methods_prompts_count": 1000,
+  "lines_prompts_count": 10,
+  "methods_prompts_count": 10,
   "infill": True, 
   "max_lines_above": 50,
   "max_lines_below": 50,

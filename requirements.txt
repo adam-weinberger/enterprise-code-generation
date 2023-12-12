@@ -31,7 +31,7 @@ bzip2=1.0.8=h1de35cc_0
 c-ares=1.19.1=h6c40b1e_0
 ca-certificates=2023.08.22=hecd8cb5_0
 cairo=1.16.0=h691a603_2
-certifi=2023.7.22=py311hecd8cb5_0
+certifi=2023.11.17=py311hecd8cb5_0
 cffi=1.15.1=py311h6c40b1e_3
 charset-normalizer=2.0.4=pyhd3eb1b0_0
 # codebleu=0.3.0=pypi_0
@@ -77,7 +77,6 @@ ipykernel=6.25.2=pyh1050b4e_0
 ipython=8.15.0=pyh31c8845_0
 ipython_genutils=0.2.0=pyhd3eb1b0_1
 ipywidgets=8.0.4=py311hecd8cb5_0
-# javalang=0.13.0=pypi_0
 jedi=0.19.0=pyhd8ed1ab_0
 jinja2=3.1.2=py311hecd8cb5_0
 jpeg=9e=h6c40b1e_1
@@ -160,7 +159,7 @@ numexpr=2.8.4=py311h728a8a3_1
 numpy=1.25.2=py311h728a8a3_0
 numpy-base=1.25.2=py311h53bf9ac_0
 openjpeg=2.4.0=h66ea3da_0
-openssl=3.0.11=hca72f7f_2
+openssl=3.0.12=hca72f7f_0
 packaging=23.1=pyhd8ed1ab_0
 pandas=2.0.3=py311hdb55bb0_0
 pandocfilters=1.5.0=pyhd3eb1b0_0
@@ -221,13 +220,15 @@ soupsieve=2.4=py311hecd8cb5_0
 sqlite=3.41.2=h6c40b1e_0
 stack_data=0.6.2=pyhd8ed1ab_0
 tbb=2021.8.0=ha357a0b_0
+termcolor=2.1.0=py311hecd8cb5_0
 terminado=0.17.1=py311hecd8cb5_0
 tinycss2=1.2.1=py311hecd8cb5_0
 tk=8.6.12=h5d9f67b_0
 toml=0.10.2=pyhd3eb1b0_0
 tornado=6.3.3=py311h2725bcf_0
+tqdm=4.65.0=py311h85bffb1_0
 traitlets=5.10.0=pyhd8ed1ab_0
-# tree-sitter=0.20.2=pypi_0
+# tree-sitter=0.20.4=pypi_0
 typing-extensions=4.8.0=hd8ed1ab_0
 typing_extensions=4.8.0=pyha770c72_0
 tzdata=2023c=h04d1e81_0

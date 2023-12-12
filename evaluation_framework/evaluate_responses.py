@@ -10,7 +10,7 @@ import subprocess
 import sys
 
 from codebleu import calc_codebleu
-from javalang import tokenizer
+from javalang.javalang import tokenizer
 import numpy as np
 import pandas as pd
 from tqdm import tqdm
@@ -136,7 +136,8 @@ def _calculate_code_bleu(test_set_df: pd.DataFrame):
     df_with_new_data = pd.concat([test_set_df, new_data], axis=1)
     return df_with_new_data
 
-def _calculate_pass_at_k(responses_df: pd.DataFrame, code_base_directory: str = config_dict['code_base_directory'], evaluation_directory: str = config_dict['evaluation_directory']):
+
+def _calculate_pass_at_k(responses_df: pd.DataFrame, code_base_directory: str, evaluation_directory: str):
     """
     find all of the modules
     for each module

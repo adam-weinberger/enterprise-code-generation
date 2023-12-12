@@ -14,32 +14,13 @@ from tqdm import tqdm
 # Shared config from across project
 from config import config_dict, logger
 
-# Global config, can be overridden via function arguments to 
-# evaluation_framework function.
-PROMPTS_PATH = config_dict['prompt_directory']
-GENERATED_RESPONSES_DIRECTORY = config_dict['generated_responses_directory']
-MODEL = config_dict['inference_model']
-TEMPERATURE = config_dict['inference_temperature']
-TOP_P = config_dict['inference_top_p']
-TIMES = config_dict['inference_times']
-MAX_TOKENS = config_dict['inference_max_tokens']
-INFERENCE_ENDPOINT = config_dict['inference_endpoint']
-
-metadata = {
-    'MODEL': MODEL,
-    'TEMPERATURE': TEMPERATURE,
-    'TOP_P': TOP_P,
-    'TIMES': TIMES,
-    'MAX_TOKENS': MAX_TOKENS
-}
-
-
 # Function definitions
 def run_completion_call(src_txt,
                         model,
                         max_tokens,
                         top_p,
-                        temperature):
+                        temperature,
+                        inference_endpoint):
     """ Execute a single call to refact /v1/completions API
 
     Keyword arguments:
@@ -48,7 +29,7 @@ def run_completion_call(src_txt,
     of the form <PRE> ... text ... <SUF> .. text .. <MID>. It is the 
     model's task to "fill in the missing text between <PRE> and <SUF>.
     """
-    res = requests.post(f"{INFERENCE_ENDPOINT}/v1/completions", json={
+    res = requests.post(f"{inference_endpoint}/v1/completions", json={
         "model": model,
         "max_tokens": max_tokens,
         "stream": False,
@@ -64,13 +45,14 @@ def run_completion_call(src_txt,
     return j["choices"][0]["text"]
 
 
-def generate_responses(output_directory = GENERATED_RESPONSES_DIRECTORY,
-                       prompts_path = PROMPTS_PATH,
-                       model = MODEL,
-                       temperature = TEMPERATURE,
-                       top_p = TOP_P,
-                       times = TIMES,
-                       max_tokens = MAX_TOKENS):
+def generate_responses(output_directory,
+                       prompts_path,
+                       model,
+                       temperature,
+                       top_p,
+                       times,
+                       max_tokens, 
+                       inference_endpoint):
     """ Given an output directory, generate responses via inference
     and writes responses to the output directory.
 
@@ -126,7 +108,8 @@ def generate_responses(output_directory = GENERATED_RESPONSES_DIRECTORY,
                                         model,
                                         max_tokens,
                                         top_p,
-                                        temperature)
+                                        temperature, 
+                                        inference_endpoint)
 
                 # add response to list
                 completion_output.append(t)
@@ -159,6 +142,14 @@ def generate_responses(output_directory = GENERATED_RESPONSES_DIRECTORY,
             try:
                 # Write metadata to a JSON file
                 metadata_output_filename = os.path.join(output_directory, f"{timestamp}_{base_filename}_{model_filename}_metadata.json")
+
+                metadata = {
+                    'MODEL': model,
+                    'TEMPERATURE': temperature,
+                    'TOP_P': top_p,
+                    'TIMES': times,
+                    'MAX_TOKENS': max_tokens
+                }
                 
                 with open(metadata_output_filename, 'w') as meta_file:
                     json.dump(metadata, meta_file, indent=4)
@@ -172,6 +163,17 @@ if __name__ == "__main__":
     if len(sys.argv) >1:
         output_directory = sys.argv[1]
 
+    # Global config, can be overridden via function arguments to 
+    # evaluation_framework function.
+    PROMPTS_PATH = config_dict['prompt_directory']
+    GENERATED_RESPONSES_DIRECTORY = config_dict['generated_responses_directory']
+    MODEL = config_dict['inference_model']
+    TEMPERATURE = config_dict['inference_temperature']
+    TOP_P = config_dict['inference_top_p']
+    TIMES = config_dict['inference_times']
+    MAX_TOKENS = config_dict['inference_max_tokens']
+    INFERENCE_ENDPOINT = config_dict['inference_endpoint']
+
     # test function call to run stand-alone rather than as part of evaluation_framework.py
     generate_responses(output_directory = GENERATED_RESPONSES_DIRECTORY,
                        prompts_path = PROMPTS_PATH,
@@ -179,4 +181,5 @@ if __name__ == "__main__":
                        temperature = TEMPERATURE,
                        top_p = TOP_P,
                        times = TIMES,
-                       max_tokens = MAX_TOKENS)
+                       max_tokens = MAX_TOKENS, 
+                       inference_endpoint = INFERENCE_ENDPOINT)

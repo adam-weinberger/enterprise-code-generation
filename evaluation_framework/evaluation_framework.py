@@ -36,8 +36,10 @@ if __name__ == "__main__":
             config_dict["train_ratio"],
             config_dict["output_directory"],
             config_dict["seed"],
+            config_dict["file_mapping_name"],
             config_dict["split_strategy"]
         )
+        
   
     if 'make_prompts' in config_dict['pipeline_steps_to_run']:
         make_prompts(
@@ -60,7 +62,8 @@ if __name__ == "__main__":
             temperature = config_dict["inference_temperature"],
             top_p = config_dict["inference_top_p"],
             times = config_dict["inference_times"],
-            max_tokens = config_dict["inference_max_tokens"]
+            max_tokens = config_dict["inference_max_tokens"], 
+            inference_endpoint=config_dict["inference_endpoint"]
         )
    
     if 'evaluate_responses' in config_dict['pipeline_steps_to_run']:

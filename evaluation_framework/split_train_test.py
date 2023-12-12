@@ -126,7 +126,7 @@ def _copy_files_to_directory(
     new_directory_name: str,
 ):
     """
-    Copy a list of files to a destination directory, preserving their relative structure (TODO should it be relative or in one directory).
+    Copy a list of files to a destination directory, preserving their relative structure.
 
     :param files: A list of file paths to be copied.
     :param source_directory: The base directory where the source files are located.
@@ -156,8 +156,8 @@ def _copy_files_to_directory(
         source_path = os.path.join(root, file)
         shutil.copy(source_path, destination_path)
 
-        parts = source_path.split('/snap_v4_clone/', 1)
-        relative_source_path = '../snap_v4_clone/' + parts[1]
+        parts = source_path.split(source_directory, 1)
+        relative_source_path = source_directory + parts[1]
         source_destination_mappings.append((relative_source_path, destination_path))
 
     df = pd.DataFrame(source_destination_mappings, columns=['old_path', 'new_path'])
