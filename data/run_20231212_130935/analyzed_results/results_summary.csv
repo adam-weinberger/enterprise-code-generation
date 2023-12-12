@@ -1,0 +1,4 @@
+,average_ngram_match_score,average_weighted_ngram_match_score,average_syntax_match_score,average_dataflow_match_score,average_label_token_count,average_completion_token_count,successful_build_rate,successful_build_rate_moe,no_error_rate,no_error_rate_moe,pass_at_1_rate,pass_at_1_rate_moe,average_code_bleu,average_code_bleu_moe,prompt_type
+20231212-142722_tokens_df_codellama-7b_output,0.0617049144027937,0.23675713322144099,0.12962962962962962,0.0,1.9,99.4,,,,,,,0.35702291931346614,0.03852276958593894,tokens
+20231212-142816_lines_df_codellama-7b_output,0.48298774399425676,0.4768371376126906,0.7404761904761904,0.3,27.5,40.4,,,,,,,0.6750752680207845,0.27240176256142523,lines
+20231212-143044_methods_df_codellama-7b_output,0.36783112591551687,0.45600352975945846,0.5090558902469351,0.39896528881823,165.0,132.2,,,,,,,0.48296395868503506,0.32179904146122956,methods

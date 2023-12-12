@@ -1,0 +1,7 @@
+{
+    "MODEL": "codellama/7b",
+    "TEMPERATURE": 0.2,
+    "TOP_P": 0.95,
+    "TIMES": 1,
+    "MAX_TOKENS": 256
+}

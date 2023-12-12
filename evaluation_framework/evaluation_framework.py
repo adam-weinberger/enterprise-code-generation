@@ -77,5 +77,5 @@ if __name__ == "__main__":
     if 'analyze_results' in config_dict['pipeline_steps_to_run']:
         analyze_results(
             config_dict["evaluation_directory"], 
-            config_dict["analyzed_results_directory"]
+            config_dict["analyzed_results_directory"], config_dict["evaluation_metrics"]
         )

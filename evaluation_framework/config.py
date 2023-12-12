@@ -8,8 +8,8 @@ import logging
 
 config_dict = {
   #run
-  "pipeline_steps_to_run": ["split_train_test", "make_prompts", "generate_responses", "evaluate_responses"],
-  "run_ts": "run_20231212_130935",#None,
+  "pipeline_steps_to_run": ["split_train_test", "make_prompts", "generate_responses", "evaluate_responses", "analyze_results"],
+  "run_ts": "20231212_130935",#None,
   #split_train_test
   "code_base_directory": "../kestra/",
   "train_ratio": 0.8,
@@ -34,7 +34,7 @@ config_dict = {
   "inference_times": 1, 
   "inference_max_tokens": 256,
   #evaluate_responses
-  "evaluation_metrics": ["CodeBLEU", "pass@k"],
+  "evaluation_metrics": ["CodeBLEU"],
   "evaluation_parallel_process_count": os.cpu_count() - 1
  }
 
