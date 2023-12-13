@@ -12,7 +12,7 @@ Solutions for fine-tuning code-generators are provided by projects like [Refact]
 
 ## How to use the tool
 1) Follow the instructions in [requirements.txt](./requirements.txt) to create a conda environment with the appropriate libraries. Note there are a few manual steps
-2) Edit the [configurations](./evaluation_framework/config.py) file in the evaluation_framework folder to have your desired settings.<br>
+2) Edit the [configurations](./evaluation_framework/config.py) file in the evaluation_framework folder to have your desired settings. Note the example input code base and output data is from the [Kestra](https://github.com/kestra-io/kestra/tree/develop) project.<br>
 2.1. Importantly, define which modules in the pipeline you would like to run. <br>
 2.2. If you are running generate_responses, you will need an instance of [Refact](https://refact.ai/) running with an endpoint for completions. You can set the address of the endpoint in the configs. The generate_responses code can be customized to work with a different endpoint<br>
 2.3. The pass@k code needs to be customized to run the unit tests for each codebase.
