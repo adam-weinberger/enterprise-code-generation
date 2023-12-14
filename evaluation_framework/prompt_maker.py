@@ -327,9 +327,9 @@ def make_prompts(
             skipped_files.append((path, "line_removal_prompts"))
 
     df_dict = {
-        'lines_df': pd.DataFrame(lines_df_list, columns=["path", "path_in_snap_repo","prompt", "label", "line_to_remove_index", "last_line_to_remove_index"]),
-        'tokens_df': pd.DataFrame(tokens_df_list, columns=["path", "path_in_snap_repo", "prompt", "label", "start_line", "end_line"]),
-        'methods_df': pd.DataFrame(methods_df_list, columns=["path", "path_in_snap_repo", "method", "prompt", "label", "start_line", "end_line"])
+        'lines_df': pd.DataFrame(lines_df_list, columns=["path", "path_in_code_repo","prompt", "label", "line_to_remove_index", "last_line_to_remove_index"]),
+        'tokens_df': pd.DataFrame(tokens_df_list, columns=["path", "path_in_code_repo", "prompt", "label", "start_line", "end_line"]),
+        'methods_df': pd.DataFrame(methods_df_list, columns=["path", "path_in_code_repo", "method", "prompt", "label", "start_line", "end_line"])
         }
 
     output_directory = os.path.join(config_dict["output_directory"], 'prompts/')

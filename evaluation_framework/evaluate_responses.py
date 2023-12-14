@@ -122,7 +122,7 @@ def _calculate_code_bleu(test_set_df: pd.DataFrame):
                 weights=(0.25, 0.25, 0.25, 0.25),
                 tokenizer=_javalang_codebleu_tokenizer_adapter)
         except Exception as e:
-            print(f'Error while calculating codebleu for {row["path_in_snap_repo"]}: {e}')
+            print(f'Error while calculating codebleu for {row["path_in_code_repo"]}: {e}')
             result = {
                  'codebleu': None,
                  'ngram_match_score': None,
@@ -279,7 +279,7 @@ def _build_generated_code(responses_df: pd.DataFrame, code_base_directory: str =
     and performs analysis on the generated code. It returns a dictionary containing build results and additional
     failure information.
 
-    :param pd.DataFrame responses_df: DataFrame containing responses with 'path_in_snap_repo', 'label',
+    :param pd.DataFrame responses_df: DataFrame containing responses with 'path_in_code_repo', 'label',
                                       and 'completion' columns.
 
     :return dict: A dictionary containing build results and additional failure information for each generated code entry.
@@ -327,11 +327,11 @@ def _build_generated_code(responses_df: pd.DataFrame, code_base_directory: str =
         for index, row in tqdm(responses_df.iterrows()):
 
             # replace the original code in the original file in the code base
-            path_in_snap_repo = os.path.join(process_code_base_directory, row['path_in_snap_repo'].replace('../snap_v4_clone/', ''))
-            _replace_text_in_file(path_in_snap_repo, row['label'], row['completion'])
+            path_in_code_repo = os.path.join(process_code_base_directory, row['path_in_code_repo'].replace(f'{code_base_directory}', ''))
+            _replace_text_in_file(path_in_code_repo, row['label'], row['completion'])
 
             # build the module again
-            module = re.search(fr"{process_code_base_directory}([^/]+)/", path_in_snap_repo).group(1)
+            module = re.search(fr"{process_code_base_directory}([^/]+)/", path_in_code_repo).group(1)
             generated_code_results['module'].append(module)
             # generated_code_results[str(index)] = _capture_maven_build_results(module, process_code_base_directory)
             # generated_code_results[str(index)]['module'] = module
@@ -342,7 +342,7 @@ def _build_generated_code(responses_df: pd.DataFrame, code_base_directory: str =
             generated_code_results['error_count'].append(build_results_dict['error_count'])
 
             # put the original code back in the module and continue with the next iteration of generated code
-            _replace_text_in_file(path_in_snap_repo, row['completion'], row['label'])
+            _replace_text_in_file(path_in_code_repo, row['completion'], row['label'])
 
         # shutil.rmtree(process_code_base_directory)
         

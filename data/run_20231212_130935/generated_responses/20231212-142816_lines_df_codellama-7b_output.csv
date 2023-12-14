@@ -1,4 +1,4 @@
-path,path_in_snap_repo,prompt,label,line_to_remove_index,last_line_to_remove_index,completion
+path,path_in_code_repo,prompt,label,line_to_remove_index,last_line_to_remove_index,completion
 data/run_20231212_130935/test/78_IntInput.java,../kestra/core/src/main/java/io/kestra/core/models/flows/input/IntInput.java,"<PRE> package io.kestra.core.models.flows.input;
 
 import io.kestra.core.models.flows.Input;
