@@ -1,4 +1,3 @@
-from collections import ChainMap
 import json
 from multiprocessing import Pool, Process
 import os
@@ -7,7 +6,6 @@ import re
 import shutil
 from typing import List, Tuple, Dict
 import subprocess
-import sys
 
 from codebleu import calc_codebleu
 from javalang.javalang import tokenizer
@@ -270,6 +268,7 @@ def _capture_maven_build_results(module: str, code_base_directory: str=config_di
     os.chdir(current_working_directory)
 
     return result
+
 
 def _build_generated_code(responses_df: pd.DataFrame, code_base_directory: str = config_dict['code_base_directory']) -> Dict:
     """

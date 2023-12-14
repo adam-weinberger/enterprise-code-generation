@@ -6,7 +6,7 @@ from scipy import stats
 
 import javalang
 
-from config import config_dict, logger
+from config import logger
 
 def margin_of_error(p_hat, n, confidence_level=0.95):
   """Calculates the margin of error for a proportion.

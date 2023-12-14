@@ -1,6 +1,6 @@
 import os
 import random
-from typing import List, Tuple
+from typing import Tuple
 
 from javalang import javalang
 import pandas as pd
